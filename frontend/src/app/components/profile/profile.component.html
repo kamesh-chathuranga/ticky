@@ -1,0 +1,81 @@
+<main class="mt-32 min-h-[calc(100vh-205px)]">
+  <div class="p-8 flex justify-center items-center">
+    <form class="row gap-8 w-1/2" (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="col-md-12 relative">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+        />
+        @if (isInvalidFirstName) {
+        <div>
+          <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+            >Oops! You forgot to enter your first name.</span
+          >
+        </div>
+        }
+      </div>
+
+      <div class="col-md-12 relative">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName"
+        />
+        @if (isInvalidLastName) {
+        <div>
+          <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+            >Oops! You forgot to enter your last name.</span
+          >
+        </div>
+        }
+      </div>
+
+      <div class="col-md-12 relative">
+        <label for="email" class="form-label">Email</label>
+        <input
+          [disabled]="true"
+          type="email"
+          class="form-control"
+          id="email"
+          [value]="user()?.email"
+        />
+      </div>
+
+      <div class="col-md-12 relative">
+        <label for="phoneNumber" class="form-label">Contact Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+        />
+        @if (isInvalidPhoneNumber) {
+        <div>
+          <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+            >Oops! You forgot to enter a valid phone number.</span
+          >
+        </div>
+        }
+      </div>
+
+      <div class="col-12 flex sm:flex-row flex-col gap-8">
+        <button type="button" class="btn btn-primary" (click)="onEditClick()">
+          Edit Profile
+        </button>
+
+        <button
+          type="submit"
+          [disabled]="!isEdited() || form.invalid"
+          class="btn btn-success w-full sm:w-fit"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</main>

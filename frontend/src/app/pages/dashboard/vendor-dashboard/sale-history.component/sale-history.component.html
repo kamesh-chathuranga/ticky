@@ -1,0 +1,29 @@
+<section class="w-full min-h-screen flex items-center justify-center relative">
+  @if (isLoading()) {
+    <app-laoding-spinner />
+  } 
+  
+  <div class="dropdown absolute left-[1rem] -top-6">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      {{ selectedYear() }}
+    </button>
+    <ul class="dropdown-menu">
+      @for (year of yearList; track $index) {
+        <li>
+          <span class="dropdown-item" (click)="onSelectYear(year)">{{ year }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+
+  @if (error()) {
+    <app-alert [message]="error()" />
+  }
+
+  <canvas id="saleHistoryChart" class="{{error() && '!hidden'}}"></canvas>
+</section>

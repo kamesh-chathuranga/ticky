@@ -1,0 +1,40 @@
+<footer
+  class="footer flex justify-between p-4 flex-col sm:flex-row items-center gap-8"
+>
+  <div class="">
+    <div class="">
+      <ul class="flex text-white gap-4 items-center">
+        <li>
+          <a
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink=""
+            class="footer-link"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a class="footer-link" routerLinkActive="active" routerLink="events"
+            >Events</a
+          >
+        </li>
+        <li>
+          <a class="footer-link" routerLinkActive="active" routerLink="about"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            class="footer-link"
+            routerLinkActive="active"
+            routerLink="contact-us"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a href="https://kamesh-c.vercel.app/" target="_blank" class="text-white"
+    >&copy; 2024 Kamesh-C</a
+  >
+</footer>

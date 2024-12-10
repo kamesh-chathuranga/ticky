@@ -1,0 +1,129 @@
+<nav class="navbar navbar-expand-lg fixed-top m-4 rounded-2xl p-2">
+  <div class="container-fluid">
+    <a class="navbar-brand me-auto" routerLink="/">
+      <div class="h-10 sm:h-14">
+        <img
+          [src]="imagePath"
+          alt="ticky-logo"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </a>
+
+    <div
+      aria-labelledby="offcanvasNavbarLabel"
+      class="offcanvas offcanvas-end"
+      id="offcanvasNavbar"
+      tabindex="-1"
+    >
+      <div class="offcanvas-header">
+        <a class="navbar-brand me-auto" routerLink="/">
+          <div class="h-10 sm:h-14">
+            <img
+              [src]="imagePath"
+              alt="ticky-logo"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </a>
+        <button
+          aria-label="Close"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          type="button"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul
+          class="navbar-nav justify-content-center flex-grow-1 pe-3 space-x-8"
+        >
+          <li class="nav-item">
+            <a
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="nav-link"
+              routerLink=""
+              routerLinkActive="active"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="events" routerLinkActive="active"
+              >Events</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about" routerLinkActive="active"
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="contact-us"
+              routerLinkActive="active"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      @if (currentUser()) {
+      <div class="dropdown">
+        <button
+          aria-expanded="false"
+          class="btn border dropdown-toggle btn-primary py-2 px-3 font-semibold text-white rounded-full"
+          data-bs-toggle="dropdown"
+          type="button"
+        >
+          {{ currentUser()?.firstName?.charAt(0)?.toUpperCase() }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a routerLink="/my-tickets" class="dropdown-item cursor-pointer"
+              >My Tickets</a
+            >
+          </li>
+          <li>
+            <a routerLink="/profile" class="dropdown-item cursor-pointer"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <span
+              (click)="onLogout()"
+              class="dropdown-item cursor-pointer bg-[#dc364e] hover:bg-[#bb2e41] text-white"
+              >Logout</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      @if (currentUser()?.userRole === 'ROLE_VENDOR' || currentUser()?.userRole
+      === 'ROLE_ADMIN') {
+      <a routerLink="/dashboard" class="btn btn-outline-primary"
+        >✨ Dashboard</a
+      >
+      } } @else {
+      <a
+        [routerLink]="['/auth/login']"
+        routerLinkActive="router-link-active"
+        class="btn btn-primary"
+        >Log In</a
+      >
+      }
+    </div>
+
+    <button
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+      class="navbar-toggler ml-8 focus:shadow-none"
+      data-bs-target="#offcanvasNavbar"
+      data-bs-toggle="offcanvas"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

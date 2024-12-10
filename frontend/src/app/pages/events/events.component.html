@@ -1,0 +1,19 @@
+<main class="p-8 mt-32 min-h-screen">
+  <h1 class="font-bold text-2xl mb-8">All Events</h1>
+
+  @if (isLoading()) {
+    <app-laoding-spinner />
+  } 
+
+  @else if (error()) {
+    <app-alert [message]="error()" />
+   }
+
+  @else {
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+      @for (event of events(); track event.id) {
+        <app-event-card [event]="event" />
+      } 
+    </div>
+  }
+</main>

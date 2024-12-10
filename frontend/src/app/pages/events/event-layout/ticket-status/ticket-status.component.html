@@ -1,0 +1,26 @@
+<section class="mt-32 p-8 w-full h-screen">
+  <h1 class="text-3xl font-bold mb-8">Ticket Status</h1>
+
+  <div class="flex h-full justify-between">
+    <div
+      class="w-2/3 h-[80%] border-2 bg-black/90 p-4 space-y-6 overflow-y-auto custom-scrollbar"
+    >
+      @for (log of logs(); track $index) {
+      <h4 class="text-white flex items-center gap-2">
+        <span class="text-green-500">INFO</span>
+        <span class="text-cyan-500">[{{ log.timestamp }}]</span>
+        <span>- {{ log.message }}: {{ log.eventId }}</span>
+      </h4>
+      }
+    </div>
+    <div>
+      <button
+        type="button"
+        (click)="onStopReleasing()"
+        class="btn btn-danger px-3 py-2 h-fit self-end space-x-4 w-fit"
+      >
+        Stop Releasing
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+<div class="flex min-h-screen w-full items-center relative">
+  <div class="w-1/2 h-full">
+    <img [src]="imagePath" alt="" class="w-full h-full" />
+  </div>
+
+  <div
+    class="w-1/2 h-full py-12 flex flex-col items-center justify-center gap-12"
+  >
+    <h1 class="text-5xl font-extrabold">Login to Ticky</h1>
+    <div class="flex gap-4 flex-col w-full px-20">
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="form"
+        class="flex gap-10 flex-col"
+      >
+        <div class="relative">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-envelope"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                class="form-control py-[0.6rem] focus:shadow-none {{
+                  isInvalidEmail && 'border-red-500'
+                }}"
+                id="email"
+                formControlName="email"
+                placeholder="Email"
+                type="email"
+              />
+              <label for="email">Email</label>
+            </div>
+          </div>
+          @if (isInvalidEmail) {
+          <div>
+            <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+              >Oops! You forgot to enter a valid email.</span
+            >
+          </div>
+          }
+        </div>
+
+        <div class="relative">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-lock"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                class="form-control py-[0.6rem] focus:shadow-none {{
+                  isInvalidPassword && 'border-red-500'
+                }}"
+                id="password"
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+              />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          @if (isInvalidPassword) {
+          <div>
+            <span class="absolute text-red-500 -bottom-6 text-sm font-semibold">
+              Oops! You forgot to enter your password.
+            </span>
+          </div>
+          }
+        </div>
+
+        <button
+          [disabled]="form.invalid"
+          class="btn btn-primary btn-lg font-semibold space-x-2"
+          type="submit"
+        >
+          @if (isLoading()) {
+          <span
+            class="spinner-border spinner-border-sm"
+            aria-hidden="true"
+          ></span>
+          <span role="status">Submitting...</span>
+          } @else {
+          <span role="status">Log In</span>
+          }
+        </button>
+      </form>
+      <span
+        >Don't have an account?
+        <a class="text-[#4180ee] hover:underline" routerLink="/auth/register"
+          >Sign Up</a
+        ></span
+      >
+    </div>
+  </div>
+</div>

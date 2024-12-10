@@ -1,0 +1,25 @@
+<a [routerLink]="['/events', event().id]">
+  <div class="col hover:scale-95 transition-transform">
+    <div class="card h-100">
+      <img
+        src="{{ event().imageUrl }}"
+        class="card-img-top max-h-60 object-cover"
+        alt="..."
+      />
+      <div class="card-body">
+        <h2 class="card-title font-bold text-lg">{{ event().name }}</h2>
+        <p class="card-text mb-3">{{ event().description }}</p>
+        <div class="flex flex-col gap-1">
+          <div class="flex gap-2 items-center">
+            <i class="fa-solid fa-calendar-days"></i
+            ><span>{{ event().eventDate | date : "fullDate" }}</span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <i class="fa-regular fa-clock"></i>
+            <span>{{ event().eventDate | date: "shortTime" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

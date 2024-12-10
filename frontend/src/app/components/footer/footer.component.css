@@ -1,0 +1,15 @@
+.footer {
+    background-color: #2869ed;
+    height: 80px;
+}
+
+.footer-link {
+    font-weight: bold;
+    color: #ffffff9c;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-link:hover,
+.footer-link.active {
+    color: #ffffff;
+}

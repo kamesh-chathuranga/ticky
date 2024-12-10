@@ -1,0 +1,337 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="form"
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title font-extrabold fs-5" id="exampleModalLabel">
+          Craete Your Event
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="flex gap-4 flex-col w-full">
+          <div class="flex gap-10 flex-col">
+            <div class="relative">
+              <div class="input-group">
+                <div class="form-floating">
+                  <input
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidName && 'border-red-500'
+                    }}"
+                    formControlName="name"
+                    placeholder="Event Name"
+                    type="text"
+                  />
+                  <label for="name">Event Name</label>
+                </div>
+              </div>
+              @if (isInvalidName) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter the event name.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="relative">
+              <div class="input-group">
+                <div class="form-floating">
+                  <textarea
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidDescription && 'border-red-500'
+                    }}"
+                    formControlName="description"
+                    placeholder="Event Description"
+                    type="text"
+                  ></textarea>
+                  <label for="description">Event Description</label>
+                </div>
+              </div>
+              @if (isInvalidDescription) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter the event description.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="relative">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">RS. </span>
+                <div class="form-floating">
+                  <input
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidTicketPrice && 'border-red-500'
+                    }}"
+                    formControlName="ticketPrice"
+                    placeholder="Ticket Price"
+                    min="50"
+                    type="number"
+                  />
+                  <label for="ticketPrice">Ticket Price</label>
+                </div>
+              </div>
+              @if (isInvalidTicketPrice) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter a valid ticket price.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="relative">
+              <div class="input-group">
+                <div class="form-floating">
+                  <input
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidTotalTickets && 'border-red-500'
+                    }}"
+                    formControlName="totalTickets"
+                    placeholder="Total Tickets"
+                    min="1"
+                    type="number"
+                  />
+                  <label for="totalTickets">Total Tickets</label>
+                </div>
+              </div>
+              @if (isInvalidTotalTickets) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter a valid number of tickets.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="relative">
+              <div class="input-group">
+                <div class="form-floating">
+                  <input
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidLocation && 'border-red-500'
+                    }}"
+                    formControlName="location"
+                    placeholder="Event Location"
+                    type="text"
+                  />
+                  <label for="location">Event Location</label>
+                </div>
+              </div>
+              @if (isInvalidLocation) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter the event location.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="relative">
+              <div class="input-group">
+                <div class="form-floating">
+                  <input
+                    class="form-control py-[0.6rem] focus:shadow-none {{
+                      isInvalidEventDate && 'border-red-500'
+                    }}"
+                    formControlName="eventDate"
+                    placeholder="Event Date"
+                    type="datetime-local"
+                  />
+                  <label for="eventDate">Event Date</label>
+                </div>
+              </div>
+              @if (isInvalidEventDate) {
+              <div>
+                <span
+                  class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+                  >Oops! You forgot to enter the event date.</span
+                >
+              </div>
+              }
+            </div>
+
+            <div class="dropdown dropup">
+              <button
+                aria-expanded="false"
+                class="btn border py-[0.6rem] dropdown-toggle"
+                data-bs-toggle="dropdown"
+                type="button"
+              >
+                {{ selectedCategory || "Select Event Category" }}
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.MUSIC)"
+                    class="dropdown-item cursor-pointer"
+                    >MUSIC</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.SPORTS)"
+                    class="dropdown-item cursor-pointer"
+                    >SPORTS</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.ARTS)"
+                    class="dropdown-item cursor-pointer"
+                    >ARTS</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.THEATER)"
+                    class="dropdown-item cursor-pointer"
+                    >THEATER</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.COMEDY)"
+                    class="dropdown-item cursor-pointer"
+                    >COMEDY</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.EDUCATION)"
+                    class="dropdown-item cursor-pointer"
+                    >EDUCATION</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.CHARITY)"
+                    class="dropdown-item cursor-pointer"
+                    >CHARITY</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.FAMILY)"
+                    class="dropdown-item cursor-pointer"
+                    >FAMILY</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.FESTIVAL)"
+                    class="dropdown-item cursor-pointer"
+                    >FESTIVAL</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.FOOD_DRINKS)"
+                    class="dropdown-item cursor-pointer"
+                    >FOOD_DRINKS</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.PARTY)"
+                    class="dropdown-item cursor-pointer"
+                    >PARTY</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.NETWORKING)"
+                    class="dropdown-item cursor-pointer"
+                    >NETWORKING</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.CONFERENCE)"
+                    class="dropdown-item cursor-pointer"
+                    >CONFERENCE</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.FAIR)"
+                    class="dropdown-item cursor-pointer"
+                    >FAIR</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.TOURNAMENT)"
+                    class="dropdown-item cursor-pointer"
+                    >TOURNAMENT</span
+                  >
+                </li>
+                <li>
+                  <span
+                    (click)="onSelectCategory(EventCategory.OTHER)"
+                    class="dropdown-item cursor-pointer"
+                    >OTHER</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="mb-2">Event Image:</h4>
+              <div class="input-group mb-3 w-fit">
+                <input
+                  type="file"
+                  (change)="onFileSelected($event)"
+                  class="form-control"
+                  id="inputGroupFile02"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid || !selectedCategory || !selectedImageFile"
+        >
+          @if (isLoading() && !error()) {
+          <span
+            class="spinner-border spinner-border-sm mr-2"
+            aria-hidden="true"
+          ></span>
+          <span role="status">Creating...</span>
+          } @else {
+          <span role="status">Save</span>
+          }
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

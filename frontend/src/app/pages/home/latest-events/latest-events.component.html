@@ -1,0 +1,17 @@
+@if (isLoading()) {
+  <app-laoding-spinner />
+} 
+
+@else if (error()) {
+ <app-alert [message]="error()" />
+}
+
+
+@else { 
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (event of events(); track event.id) {
+      <app-event-card [event]="event" />
+    } 
+  </div>
+}
+

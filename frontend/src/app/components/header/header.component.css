@@ -1,0 +1,36 @@
+.navbar {
+    background-color: white;
+    height: 80px;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: black;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #2869ed;
+}
+
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2869ed;
+        visibility: hidden;
+        transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        visibility: visible;
+        width: 100%;
+    }
+}

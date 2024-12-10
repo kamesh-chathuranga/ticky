@@ -1,0 +1,33 @@
+<section>
+  <app-modal />
+
+  <div class="text-right">
+    <button
+      type="button"
+      class="btn btn-primary rounded-3xl px-3 py-2 h-fit space-x-4"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      <i class="fa-solid fa-plus"></i>
+      <span>Create Event</span>
+    </button>
+  </div>
+
+  <div class="mt-6">
+    @if (isLoading()) {
+      <app-laoding-spinner />
+    } 
+    
+    @else if (error()) {
+      <app-alert [message]="error()" />
+    }
+  
+    @else { 
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        @for (event of events(); track event.id) {
+          <app-event-card [event]="event" />
+        } 
+      </div>
+    }
+  </div>
+</section>

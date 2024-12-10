@@ -1,0 +1,117 @@
+<main class="mt-32 min-h-screen">
+  <section class="p-8">
+    <div class="w-full h-full flex gap-12 items-center justify-center flex-col">
+      <h1 class="text-3xl font-bold">Configure the Ticket Pool</h1>
+
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="form"
+        class="flex gap-10 flex-col w-1/2"
+      >
+        <div class="relative">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-ticket"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                class="form-control py-[0.6rem] focus:shadow-none {{
+                  isInvalidMaxTicketCapacity && 'border-red-500'
+                }}"
+                formControlName="maxTicketCapacity"
+                placeholder="Max Ticket Capacity"
+                type="number"
+                id="maxTicketCapacity"
+                min="1"
+              />
+              <label for="maxTicketCapacity">Max Ticket Capacity</label>
+            </div>
+          </div>
+          @if (isInvalidMaxTicketCapacity) {
+          <div>
+            <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+              >Ivalid max ticket capacity</span
+            >
+          </div>
+          }
+        </div>
+
+        <div class="relative">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-ticket"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                class="form-control py-[0.6rem] focus:shadow-none {{
+                  isInvalidTicketReleaseRate && 'border-red-500'
+                }}"
+                formControlName="ticketReleaseRate"
+                placeholder="Ticket Release Rate in milliseconds"
+                type="number"
+                id="ticketReleaseRate"
+                min="50"
+              />
+              <label for="ticketReleaseRate"
+                >Ticket Release Rate in milliseconds</label
+              >
+            </div>
+          </div>
+          @if (isInvalidTicketReleaseRate) {
+          <div>
+            <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+              >Invalid ticket release rate</span
+            >
+          </div>
+          }
+        </div>
+
+        <div class="relative">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-ticket"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                class="form-control py-[0.6rem] focus:shadow-none {{
+                  isInvalidCustomerRetrievalRate && 'border-red-500'
+                }}"
+                formControlName="customerRetrievalRate"
+                placeholder="Customer Retrieval Rate in milliseconds"
+                type="number"
+                id="customerRetrievalRate"
+                min="50"
+              />
+              <label for="customerRetrievalRate"
+                >Customer Retrieval Rate in milliseconds</label
+              >
+            </div>
+          </div>
+          @if (isInvalidCustomerRetrievalRate) {
+          <div>
+            <span class="absolute text-red-500 -bottom-6 text-sm font-semibold"
+              >Invalid customer retrieval rate</span
+            >
+          </div>
+          }
+        </div>
+
+        <button
+          [disabled]="form.invalid"
+          class="btn btn-primary btn-lg font-semibold space-x-2"
+          type="submit"
+        >
+          @if (isLoading()) {
+          <span
+            class="spinner-border spinner-border-sm"
+            aria-hidden="true"
+          ></span>
+          <span role="status">Configuring...</span>
+          } @else {
+          <span role="status">Configure</span>
+          }
+        </button>
+      </form>
+    </div>
+  </section>
+</main>

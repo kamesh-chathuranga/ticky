@@ -1,0 +1,6 @@
+@if (user()?.userRole === 'ROLE_ADMIN') {
+    <app-admin-dashboard />
+} 
+@else if (user()?.userRole === 'ROLE_VENDOR') {
+    <app-vendor-dashboard />
+}
