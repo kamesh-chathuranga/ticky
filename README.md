@@ -1,28 +1,46 @@
 ![home-page](https://github.com/user-attachments/assets/fb989e83-3a85-4318-af4e-42b648450dec)
 
 ---
+![logo](https://github.com/user-attachments/assets/52c06dec-e433-400f-a48d-0d07dfcda651)
+# Ticky 
 
-# Ticky
 
 This project implements a comprehensive and high-performance **Real-Time Ticketing System** designed to handle high volumes of concurrent ticket sales efficiently. 
 It leverages the power of Angular to deliver a dynamic and user-friendly frontend experience, while employing Spring Boot to provide a robust and scalable backend infrastructure. 
 This combination ensures a seamless and efficient ticketing experience for both vendors and customers.
 
+---
+
+## Tech Stack
+
+### Frontend
+- Built with **Angular**.
+- Uses **WebSocket** for real-time updates.
+- Implements **Chart.js** for dynamic data visualization.
+
+### Backend
+- Developed with **Spring Boot**.
+- Implements multithreading using the `java.util.concurrent` package.
+- Uses a **relational database** for persistence.
+
+---
+
 ## Features
 
 - **Admins**:
-  - Configuration Management
+  - ✅ Configuration Management
     
 - **Vendors**:
-  - Event Creation and Management
-  - Dedicated Dashboard
-  - Real-Time Ticket Status
+  - ✅ Event Creation and Management
+  - ✅ Dedicated Dashboard
+  - ✅ Real-Time Ticket Status
  
 - **Customers**:
-  - Intuitive Ticket Purchase
-  - Real-Time Ticket Availability
-  - Profile Management
-  - Purchase History
+  - ✅ Intuitive Ticket Purchase
+  - ✅ Real-Time Ticket Availability
+  - ✅ Profile Management
+  - ✅ Purchase History
+  - ✅ User authentication and role-based access control
 
 ## Installation
 
@@ -35,7 +53,7 @@ This combination ensures a seamless and efficient ticketing experience for both 
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/kamesh-chathuranga/ticky.git
    cd real-time-ticketing-system
    ```
 
@@ -70,8 +88,8 @@ This combination ensures a seamless and efficient ticketing experience for both 
    - Open the browser and navigate to `http://localhost:4200`.
 
 3. **Configure Ticketing System**:
-   - Use the configuration section to define ticket pool size, vendor/customer count, etc.
-   - Press the "Start" button to begin ticket sales.
+   - Use the configuration section to define ticket pool size.
+   - Press the "Release Ticket" button to begin ticket sales.
 
 4. **Monitor Live Updates**:
    - View real-time ticket sales, remaining tickets, and transaction logs.
@@ -79,42 +97,19 @@ This combination ensures a seamless and efficient ticketing experience for both 
 
 ---
 
-## API Endpoints
+## Main API Endpoints
 
-| Method | Endpoint               | Description                          |
-|--------|------------------------|--------------------------------------|
-| GET    | `/api/tickets`         | Fetches current ticket status.       |
-| POST   | `/api/config`          | Updates ticketing system settings.   |
-| GET    | `/api/sales/visualize` | Returns data for real-time charts.   |
-| POST   | `/api/start`           | Starts the ticketing process.        |
-| POST   | `/api/stop`            | Stops the ticketing process.         |
-
----
-
-## Architecture
-
-### Frontend
-- Built with **Angular**.
-- Uses **WebSocket** for real-time updates.
-- Implements **Chart.js** for dynamic data visualization.
-
-### Backend
-- Developed with **Spring Boot**.
-- Implements multithreading using the `java.util.concurrent` package.
-- Uses a **relational database** for persistence.
+| Method | Endpoint                          | Description                          |
+|--------|-----------------------------------|--------------------------------------|
+| POST   | `/api/admin/ticket-pool`          | Configure the Ticket Pool.           |
+| GET    | `/api/events`                     | Get all events.                      |
+| GET    | `/api/vendor/events/{eventId}`    | Release tickets for the event.       |
+| POST   | `/api/user/event/{eventId}/buy`   | Buy ticket for the event.            |
+| POST   | `/api/tickets/sales/{year}`       | Yearly ticket sales for the event.   |
 
 ---
 
 ## Future Enhancements
 - Implement advanced analytics for ticket sales patterns.
-- Add user authentication and role-based access control.
-- Extend support for more complex ticketing scenarios (e.g., priority tickets, refunds).
-
----
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-Let me know if you need any changes or additional sections!
+- Add Provider user authentication (Google).
+- Extend support for more complex ticketing scenarios (e.g., priority tickets).
