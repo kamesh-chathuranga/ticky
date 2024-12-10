@@ -54,7 +54,7 @@ This combination ensures a seamless and efficient ticketing experience for both 
 1. Clone the repository:
    ```bash
    git clone https://github.com/kamesh-chathuranga/ticky.git
-   cd real-time-ticketing-system
+   cd ticky
    ```
 
 2. Set up the backend:
@@ -104,8 +104,8 @@ This combination ensures a seamless and efficient ticketing experience for both 
 | POST   | `/api/admin/ticket-pool`          | Configure the Ticket Pool.           |
 | GET    | `/api/events`                     | Get all events.                      |
 | GET    | `/api/vendor/events/{eventId}`    | Release tickets for the event.       |
-| POST   | `/api/user/event/{eventId}/buy`   | Buy ticket for the event.            |
-| POST   | `/api/tickets/sales/{year}`       | Yearly ticket sales for the event.   |
+| GET    | `/api/user/event/{eventId}/buy`   | Buy ticket for the event.            |
+| GET    | `/api/tickets/sales/{year}`       | Yearly ticket sales for the event.   |
 
 ---
 
