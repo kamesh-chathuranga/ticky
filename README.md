@@ -1,9 +1,8 @@
 ![home-page](https://github.com/user-attachments/assets/fb989e83-3a85-4318-af4e-42b648450dec)
 
 ---
-![logo](https://github.com/user-attachments/assets/52c06dec-e433-400f-a48d-0d07dfcda651)
-# Ticky 
 
+# Ticky 
 
 This project implements a comprehensive and high-performance **Real-Time Ticketing System** designed to handle high volumes of concurrent ticket sales efficiently. 
 It leverages the power of Angular to deliver a dynamic and user-friendly frontend experience, while employing Spring Boot to provide a robust and scalable backend infrastructure. 
@@ -94,6 +93,27 @@ This combination ensures a seamless and efficient ticketing experience for both 
 4. **Monitor Live Updates**:
    - View real-time ticket sales, remaining tickets, and transaction logs.
    - Observe live charts for ticket sales visualization.
+
+## Login Page
+![Ticky - Google Chrome 12_11_2024 10_29_10 PM](https://github.com/user-attachments/assets/9f160a02-7a61-4f6a-9a03-49fe189eb514)
+
+## Registration Page
+![Ticky - Google Chrome 12_11_2024 10_29_23 PM](https://github.com/user-attachments/assets/984d852a-acb9-420c-a1dc-383516fd393f)
+
+## Admin Configuration Page
+![Ticky - Google Chrome 12_11_2024 10_31_12 PM](https://github.com/user-attachments/assets/097fc1a1-21be-4698-b4d8-01c8455c3c6a)
+
+## Event Details Page
+![Ticky - Google Chrome 12_11_2024 10_30_04 PM](https://github.com/user-attachments/assets/8e2d0a03-6188-4dcd-9c48-13b5ac61a2e7)
+
+## User Profile Page
+![Ticky - Google Chrome 12_11_2024 10_33_54 PM](https://github.com/user-attachments/assets/43096b54-25d1-4304-8630-4442542c5fd1)
+
+## My Events Page
+![Ticky - Google Chrome 12_11_2024 10_30_16 PM](https://github.com/user-attachments/assets/69593146-80be-4c1e-b113-e1f70e27938e)
+
+## Ticket Status Page
+![Ticky - Google Chrome 12_11_2024 10_33_32 PM](https://github.com/user-attachments/assets/68de8744-7988-4b06-9e58-77ca6cb25696)
 
 ---
 
