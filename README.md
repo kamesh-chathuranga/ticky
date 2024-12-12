@@ -127,6 +127,9 @@ This combination ensures a seamless and efficient ticketing experience for both 
 | GET    | `/api/user/event/{eventId}/buy`   | Buy ticket for the event.            |
 | GET    | `/api/tickets/sales/{year}`       | Yearly ticket sales for the event.   |
 
+## All API Endpoints
+http://localhost:8080/api/swagger-ui/index.html#/
+
 ---
 
 ## Future Enhancements
